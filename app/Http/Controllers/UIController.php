@@ -18,8 +18,8 @@ class UIController extends Controller
         $doctors = Doctor::where('status', 1)->get();
         $catIcu = BedCategory::where('name', 'ICU')->first();
         $catCcu = BedCategory::where('name', 'CCU')->first();
-        $icu = Bed::where('bed_category_id', $catIcu->id)->get();
-        $ccu = Bed::where('bed_category_id', $catCcu->id)->get();
+        $icu = Bed::where('bed_category_id', $catIcu?->id)->get();
+        $ccu = Bed::where('bed_category_id', $catCcu?->id)->get();
         return view('frontend.index', compact('departments', 'doctors', 'services', 'icu', 'ccu'));
     }
 }
